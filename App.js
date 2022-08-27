@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import Navigator from './routes/homeStack';
+import Home from './Screens/Home';
+let customFonts = {
+  'Poppins-Black': require('./assets/fonts/Poppins-Black.ttf'),
+  'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf')
+};
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = () => {
+  const [isLoaded] = useFonts(customFonts);
+  if (!isLoaded) {
+    return null
+  }
+    return <Navigator />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
